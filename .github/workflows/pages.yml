@@ -32,7 +32,7 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      - name: Add .nojekyll file
+      - name: Create .nojekyll file
         run: touch ./dist/.nojekyll
       - name: Setup Pages
         uses: actions/configure-pages@v4
