@@ -309,14 +309,134 @@ const Dashboard = () => {
           </TabsContent>
 
           <TabsContent value="analytics">
-            <Card>
-              <CardHeader>
-                <CardTitle>Analytics Dashboard</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">Analytics dashboard coming soon...</p>
-              </CardContent>
-            </Card>
+            <div className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <BarChart3 className="h-5 w-5 text-blue-500" />
+                    Analytics Dashboard
+                  </CardTitle>
+                  <CardDescription>
+                    Comprehensive analytics and insights for your educational content
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Tabs defaultValue="overview" className="w-full">
+                    <TabsList className="grid w-full grid-cols-4">
+                      <TabsTrigger value="overview">Overview</TabsTrigger>
+                      <TabsTrigger value="performance">Performance</TabsTrigger>
+                      <TabsTrigger value="visualization">Visualizations</TabsTrigger>
+                      <TabsTrigger value="learning">Learning Paths</TabsTrigger>
+                    </TabsList>
+
+                    <TabsContent value="overview" className="mt-6">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <Card>
+                          <CardContent className="p-4">
+                            <div className="flex items-center justify-between">
+                              <div>
+                                <p className="text-sm text-gray-600">Total Content</p>
+                                <p className="text-2xl font-bold">24</p>
+                              </div>
+                              <TrendingUp className="h-6 w-6 text-green-500" />
+                            </div>
+                          </CardContent>
+                        </Card>
+                        <Card>
+                          <CardContent className="p-4">
+                            <div className="flex items-center justify-between">
+                              <div>
+                                <p className="text-sm text-gray-600">Active Learners</p>
+                                <p className="text-2xl font-bold">1,247</p>
+                              </div>
+                              <Users className="h-6 w-6 text-blue-500" />
+                            </div>
+                          </CardContent>
+                        </Card>
+                        <Card>
+                          <CardContent className="p-4">
+                            <div className="flex items-center justify-between">
+                              <div>
+                                <p className="text-sm text-gray-600">Avg. Completion</p>
+                                <p className="text-2xl font-bold">84%</p>
+                              </div>
+                              <Target className="h-6 w-6 text-purple-500" />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </div>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <Card>
+                          <CardHeader>
+                            <CardTitle className="text-lg">Content Performance</CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="space-y-3">
+                              {projects.slice(0, 3).map((project) => (
+                                <div key={project.id} className="flex items-center justify-between p-2 border rounded">
+                                  <div>
+                                    <p className="font-medium text-sm">{project.title}</p>
+                                    <p className="text-xs text-gray-600">{project.views} views</p>
+                                  </div>
+                                  <Badge className={getStatusColor(project.status)}>
+                                    {project.status}
+                                  </Badge>
+                                </div>
+                              ))}
+                            </div>
+                          </CardContent>
+                        </Card>
+                        <Card>
+                          <CardHeader>
+                            <CardTitle className="text-lg">Quick Actions</CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="space-y-2">
+                              <Button variant="outline" className="w-full justify-start">
+                                <BarChart3 className="h-4 w-4 mr-2" />
+                                Create Visualization
+                              </Button>
+                              <Button variant="outline" className="w-full justify-start">
+                                <Target className="h-4 w-4 mr-2" />
+                                Generate Learning Path
+                              </Button>
+                              <Button variant="outline" className="w-full justify-start">
+                                <TrendingUp className="h-4 w-4 mr-2" />
+                                View Performance Report
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </TabsContent>
+
+                    <TabsContent value="performance" className="mt-6">
+                      <p className="text-gray-600 mb-4">Advanced performance tracking and analytics</p>
+                      <Button variant="outline">
+                        <TrendingUp className="h-4 w-4 mr-2" />
+                        Open Performance Tracker
+                      </Button>
+                    </TabsContent>
+
+                    <TabsContent value="visualization" className="mt-6">
+                      <p className="text-gray-600 mb-4">Create interactive charts and data visualizations</p>
+                      <Button variant="outline">
+                        <BarChart3 className="h-4 w-4 mr-2" />
+                        Open Chart Builder
+                      </Button>
+                    </TabsContent>
+
+                    <TabsContent value="learning" className="mt-6">
+                      <p className="text-gray-600 mb-4">AI-powered learning path generation</p>
+                      <Button variant="outline">
+                        <Brain className="h-4 w-4 mr-2" />
+                        Open Learning Path Generator
+                      </Button>
+                    </TabsContent>
+                  </Tabs>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
 
           <TabsContent value="settings">
